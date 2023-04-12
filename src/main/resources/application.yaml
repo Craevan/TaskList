@@ -8,4 +8,9 @@ spring:
     init:
       mode: always
       continue-on-error: false
-      data-locations: classpath:/sql/init.sql, classpath:/sql/populate.sql
+      data-locations: classpath:/sql/init.sql #,classpath:/sql/populate.sql
+security:
+  jwt:
+    secret: ${JWT_SECRET}
+    access: 3600000
+    refresh: 2592000000
