@@ -9,7 +9,7 @@ import com.crevan.tasklist.web.dto.user.UserDto;
 import com.crevan.tasklist.web.dto.validation.OnCreate;
 import com.crevan.tasklist.web.dto.validation.OnUpdate;
 import com.crevan.tasklist.web.mapper.TaskMapper;
-import com.crevan.tasklist.web.mapper.USerMapper;
+import com.crevan.tasklist.web.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -23,22 +23,22 @@ import java.util.List;
 public class UserController {
 
     private final UserService userService;
-    private final USerMapper uSerMapper;
+    private final UserMapper userMapper;
 
     private final TaskService taskService;
     private final TaskMapper taskMapper;
 
     @PutMapping
     public UserDto update(@Validated(OnUpdate.class) @RequestBody final UserDto userDto) {
-        User user = uSerMapper.toEntity(userDto);
+        User user = userMapper.toEntity(userDto);
         User updatedUser = userService.update(user);
-        return uSerMapper.toDto(updatedUser);
+        return userMapper.toDto(updatedUser);
     }
 
     @GetMapping(value = "/{id}")
     public UserDto getById(@PathVariable final Long id) {
         User user = userService.getById(id);
-        return uSerMapper.toDto(user);
+        return userMapper.toDto(user);
     }
 
     @DeleteMapping(value = "/{id}")

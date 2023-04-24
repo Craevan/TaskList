@@ -5,7 +5,7 @@ import com.crevan.tasklist.web.dto.user.UserDto;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
-public interface USerMapper {
+public interface UserMapper {
 
     UserDto toDto(final User user);
 
